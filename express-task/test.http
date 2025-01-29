@@ -1,0 +1,30 @@
+### Create a Customer
+POST http://localhost:3000/customers
+Content-Type: application/json
+
+{
+  "fullname": "Dharun Prakash J A",
+  "username": "dp",
+  "password": "123",
+  "aadhaar": 1234567890,
+  "pan": "DHARUN1234",
+  "contact": 123456789,
+  "email": "dharun@gmail.com"
+}
+
+### Get All Customers
+GET http://localhost:3000/customers
+
+### Get Customer by ID
+GET http://localhost:3000/customers/{{customerId}}
+
+### Update Customer by ID
+PUT http://localhost:3000/customers/{{customerId}}
+Content-Type: application/json
+
+{
+  "fullname": "Jane Doe"
+}
+
+### Delete Customer by ID
+DELETE http://localhost:3000/customers/{{customerId}}
