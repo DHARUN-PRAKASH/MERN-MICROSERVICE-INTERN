@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+
 // Bank Customer Schema
 var Customer = new mongoose.Schema({
   fullname: { type: String },
