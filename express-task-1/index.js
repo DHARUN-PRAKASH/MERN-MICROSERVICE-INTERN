@@ -2,9 +2,35 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const customer = require('./customerSchema');
 const mongoose = require('./db');
+const Consul = require('consul')
+const consul = new Consul
 
 const app = express();
 app.use(bodyParser.json());
+
+const serviceKey = "customer"
+
+
+// REGISTERING CUSTOMER TO DISCOVERY SERVER
+consul.agent.service.register({
+  id:serviceKey,
+  name:serviceKey,
+  address:"localhost",
+  port:3000
+},
+(err)=>{
+  if(err)
+      throw err;
+  console.log('Customer Service successfully registered')
+})
+// deregister from consul discovery server whenever ctrl+c/ interruption happens
+process.on("SIGINT",async()=>{
+  consul.agent.service.deregister(serviceKey,()=>{
+      if(err)
+          throw err
+      console.log("Customer service deregistered")
+  })
+})
 
 // POST CUSTOMER
 app.post('/',async(req,res)=>{
