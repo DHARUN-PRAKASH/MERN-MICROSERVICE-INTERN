@@ -1,0 +1,51 @@
+### Create a Customer
+POST http://localhost:6000/
+Content-Type: application/json
+
+{
+  "fullname": "Prakash",
+  "username": "P3",
+  "password": "123",
+  "aadhaar": 987654321,
+  "pan": "PRAKASH",
+  "contact": 987645,
+  "email": "prakash@gmail.com"
+}
+
+### Get All Customers
+GET http://localhost:6000/
+Content-Type: application/json
+
+### Get Customer by ID
+GET http://localhost:6000/6798e4cf099ff42db761e9b5
+
+### Update Customer by ID
+PUT http://localhost:6000/
+Content-Type: application/json
+
+{
+  "_id": "6798e4cf099ff42db761e9b5",
+  "fullname": "Dharun",
+  "username": "dp",
+  "password": "123",
+  "aadhaar": 1234567890,
+  "pan": "DHARUN1234",
+  "contact": 123456789,
+  "email": "dharun@gmail.com",
+  "__v": 0
+}
+
+### Delete Customer by ID
+DELETE http://localhost:6000/6798e4cf099ff42db761e9b5
+
+### GET CUSTOMER BY AADHAR 
+
+GET http://localhost:6000/aadhar/123456789122120
+
+### GET CUSTOMER BY USERNAME 
+
+GET http://localhost:6000/username/dpz
+
+### GET CUSTOMER BY USERNAME 
+
+GET http://localhost:6000/customer/dpz

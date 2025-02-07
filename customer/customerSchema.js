@@ -9,7 +9,7 @@ var Customer = new mongoose.Schema({
   aadhaar: { type: Number },
   pan: { type: String },
   contact: { type: Number },
-  email: { type: String }
+  email: { type: String },
 });
 
 module.exports = mongoose.model('Customer', Customer);

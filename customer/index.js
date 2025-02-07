@@ -4,6 +4,7 @@ const customer = require('./customerSchema');
 const mongoose = require('./db');
 const Consul = require('consul')
 const consul = new Consul
+const axios = require('axios')
 
 const app = express();
 app.use(bodyParser.json());
@@ -16,7 +17,7 @@ consul.agent.service.register({
   id:serviceKey,
   name:serviceKey,
   address:"localhost",
-  port:3000
+  port:6000
 },
 (err)=>{
   if(err)
@@ -49,10 +50,10 @@ app.post('/',async(req,res)=>{
 
 // READ CUSTOMER
 
-app.get('/',async(req,res)=>{
-  const experts = await customer.find()
-  res.json(experts)
-})
+// app.get('/',async(req,res)=>{
+//   const experts = await customer.find()
+//   res.json(experts)
+// })
 
 // READ THE CUTOMER BY ID 
 app.get('/:id',async(req,res)=>{
@@ -81,7 +82,34 @@ app.get('/aadhar/:aadharNumber',async(req,res)=>{
   res.json(list)
 })
 
+// GET CUSTOMER BY USERNAME
 
-app.listen(3000, () => {
-    console.log('Express Running !!!');
+app.get('/username/:username',async(req,res)=>{
+  const list = await customer.find({username:req.params.username})
+  res.json(list)
+})
+
+app.get('/',async(req,res)=>{
+  var cust = await customer.find()
+  const services = await consul.catalog.service.nodes('account')
+  if(services.length==0)
+      throw new Error("account service not registered in consul")
+  const accServ = services[0]
+  const updatedExperts = await Promise.all(
+      cust.map(async(each)=>{
+          let customer_account = []
+          try{
+              const received = await axios.get(`http://${accServ.Address}:${accServ.ServicePort}/username/${each.username}`)
+              customer_account = received.data
+          }
+          catch(error){return res.json({message:"Error fetching account"})}
+          // building new response json for each expert
+          return {"Customer":each,"Account":customer_account}
+      })
+  )
+  res.json(updatedExperts)
+})
+
+app.listen(6000, () => {
+    console.log('Customer Running !!!');
 });

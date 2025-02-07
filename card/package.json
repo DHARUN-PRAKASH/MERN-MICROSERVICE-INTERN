@@ -1,5 +1,5 @@
 {
-  "name": "express-task",
+  "name": "card",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,6 @@
     "body-parser": "^1.20.3",
     "consul": "^2.0.1",
     "express": "^4.21.2",
-    "mongoose": "^8.9.5",
-    "nodemon": "^3.1.9"
+    "mongoose": "^8.10.0"
   }
 }

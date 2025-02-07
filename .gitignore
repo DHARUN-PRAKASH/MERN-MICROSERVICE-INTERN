@@ -1,3 +1,4 @@
-express-task-1/node_modules
-express-task-2/node_modules
+customer/node_modules
+account/node_modules
+card/node_modules
 express-gateway/node_modules
