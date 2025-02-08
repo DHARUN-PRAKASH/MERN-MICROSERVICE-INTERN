@@ -5,6 +5,9 @@ const mongoose = require('./db');
 const Consul = require('consul')
 const consul = new Consul
 const axios = require('axios')
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 const app = express();
 app.use(bodyParser.json());
@@ -34,19 +37,43 @@ process.on("SIGINT",async()=>{
 })
 
 // POST CUSTOMER
-app.post('/',async(req,res)=>{
-  const obj = new customer({
-      fullname:req.body.fullname,
-      username:req.body.username,
-      password:req.body.password,
-      aadhaar:req.body.aadhaar,
-      pan:req.body.pan,
-      contact:req.body.contact,
-      email:req.body.emailx
-  })
-  const result = await obj.save()
-  res.json(result)
-})
+const SECRET_KEY = process.env.secret;
+// console.log("JWT Secret Key:", SECRET_KEY);
+
+app.post('/', async (req, res) => {
+    try {
+      console.log("JWT Secret Key:", SECRET_KEY);
+
+        const { fullname, username, password, aadhaar, pan, contact, email } = req.body;
+
+        // Hash the password before saving
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const obj = new customer({
+            fullname,
+            username,
+            password: hashedPassword, // Store hashed password
+            aadhaar,
+            pan,
+            contact,
+            email
+        });
+
+        const result = await obj.save();
+
+        // Generate JWT token
+        const token = jwt.sign(
+            { id: result._id, username: result.username },
+            SECRET_KEY,
+            { expiresIn: '1h' }
+        );
+
+        res.json({ result, token });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 
 // READ CUSTOMER
 

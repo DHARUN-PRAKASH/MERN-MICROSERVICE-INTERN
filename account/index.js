@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('./db');
@@ -31,16 +32,37 @@ process.on("SIGINT", async () => {
 });
 
 // ADD ACCOUNT
+
+const SECRET_KEY = process.env.JWT_SECRET;
+ // Load secret key from .env
+
 app.post('/', async (req, res) => {
     try {
-        const obj = new account({
-            username: req.body.username,
-            accountNumber: req.body.accountNumber,
-            accountBalance: req.body.accountBalance,
-            accountStatus: req.body.accountStatus,
+        const { fullname, username, password, aadhaar, pan, contact, email } = req.body;
+
+        // Hash the password before saving
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const obj = new customer({
+            fullname,
+            username,
+            password: hashedPassword, // Store hashed password
+            aadhaar,
+            pan,
+            contact,
+            email
         });
+
         const result = await obj.save();
-        res.json({ message: "Account Created", result });
+
+        // Generate JWT token
+        const token = jwt.sign(
+            { id: result._id, username: result.username },
+            SECRET_KEY,
+            { expiresIn: '1h' }
+        );
+
+        res.json({ result, token });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

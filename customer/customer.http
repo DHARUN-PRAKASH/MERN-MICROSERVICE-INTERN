@@ -4,13 +4,13 @@ POST http://localhost:6000/
 Content-Type: application/json
 
 {
-  "fullname": "Moulee",
-  "username": "P3",
-  "password": "123",
+  "fullname": "Lenin",
+  "username": "lenin3",
+  "password": "12345678890",
   "aadhaar": 987654321,
-  "pan": "PRAKASH",
+  "pan": "Lenin1223",
   "contact": 987645,
-  "email": "prakash@gmail.com"
+  "email": "lenin@gmail.com"
 }
 
 ### Get All Customers
