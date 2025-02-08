@@ -36,13 +36,43 @@ process.on("SIGINT",async()=>{
   })
 })
 
+// TOKEN VERFICATION 
+
+// token verification
+let token = ''
+const authenticateToken=(req,res,next)=>{
+    const receivedHeader = req.headers['authorization']
+    if(!receivedHeader){
+        return res.json({message:"No header has provided"})
+    }
+    // fetch the token alone from header using split by space delimiter
+    token = receivedHeader.split(' ')[1]
+    jwt.verify(token,process.env.secret,(err,decoded)=>{
+        if(err){
+            return res.json({message:"Unauthorized Access/ Invalid Token"})
+        }
+        req.user = decoded
+        next()
+    })
+}
+
+// forward Token
+const authForward = (req,res,next)=>{
+    const header = req.headers['authorization']
+    if(header){
+        req.headers['authorization']=header
+        // create an new header with same value for forwarding to the service
+    }
+    next()// forwarding invoked
+}
+
+
 // POST CUSTOMER
 const SECRET_KEY = process.env.secret;
 // console.log("JWT Secret Key:", SECRET_KEY);
 
 app.post('/', async (req, res) => {
     try {
-      console.log("JWT Secret Key:", SECRET_KEY);
 
         const { fullname, username, password, aadhaar, pan, contact, email } = req.body;
 
@@ -131,7 +161,7 @@ app.get('/username/:username',async(req,res)=>{
   res.json(list)
 })
 
-app.get('/',async(req,res)=>{
+app.get('/',authenticateToken,async(req,res)=>{
   var cust = await customer.find()
   const services = await consul.catalog.service.nodes('account')
   if(services.length==0)

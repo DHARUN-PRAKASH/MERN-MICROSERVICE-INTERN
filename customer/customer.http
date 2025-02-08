@@ -15,7 +15,7 @@ Content-Type: application/json
 
 ### Get All Customers
 GET http://localhost:6000/
-Content-Type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsascckbjcsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmYzE2OTE2OGQwNDcxMGYxZGQ1YiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk2NzU5LCJleHAiOjE3MzkwMDAzNTl9.bzUbzRrN_NG-gcV4DSju5wNLanczcsewGHI2VZvL0Gk
 
 ### Get Customer by ID
 GET http://localhost:6000/6798e4cf099ff42db761e9b5
