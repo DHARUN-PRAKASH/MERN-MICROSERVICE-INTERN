@@ -3,6 +3,9 @@ const bodyParser = require('body-parser');
 const Card = require('./cardSchema');
 const mongoose = require('./db');
 const Consul = require('consul');
+const jwt = require("jsonwebtoken");
+require('dotenv').config()
+const bcrypt = require("bcryptjs");
 
 const app = express();
 app.use(bodyParser.json());
@@ -30,10 +33,37 @@ process.on("SIGINT", async () => {
     });
 });
 
+// TOKEN VERFICATION 
+let token = ''
+const authenticateToken=(req,res,next)=>{
+    const receivedHeader = req.headers['authorization']
+    if(!receivedHeader){
+        return res.json({message:"No header has provided"})
+    }
+    // fetch the token alone from header using split by space delimiter
+    token = receivedHeader.split(' ')[1]
+    jwt.verify(token,process.env.secret,(err,decoded)=>{
+        if(err){
+            return res.json({message:"Unauthorized Access/ Invalid Token"})
+        }
+        req.user = decoded
+        next()
+    })
+}
+
+// forward Token
+const authForward = (req,res,next)=>{
+    const header = req.headers['authorization']
+    if(header){
+        req.headers['authorization']=header
+        // create an new header with same value for forwarding to the service
+    }
+    next()// forwarding invoked
+}
 
 // ADD NEW CARD
 
-app.post('/', async (req, res) => {
+app.post('/',authenticateToken, async (req, res) => {
     try {
         const card = new Card(req.body);
         await card.save();
@@ -44,7 +74,7 @@ app.post('/', async (req, res) => {
 });
 
 // GET ALL CARDS
-app.get('/', async (req, res) => {
+app.get('/',authenticateToken,async (req, res) => {
     try {
         const cards = await Card.find();
         res.json(cards);
@@ -54,7 +84,7 @@ app.get('/', async (req, res) => {
 });
 
 //GET CARD BY ID
-app.get('/:id', async (req, res) => {
+app.get('/:id',authenticateToken, async (req, res) => {
     try {
         const card = await Card.findById(req.params.id);
         if (!card) return res.status(404).json({ message: "Card not found" });
@@ -66,7 +96,7 @@ app.get('/:id', async (req, res) => {
 
 // UPDATE CARD BY ID 
 
-app.put('/:id', async (req, res) => {
+app.put('/:id',authenticateToken, async (req, res) => {
     try {
         const updatedCard = await Card.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (!updatedCard) return res.status(404).json({ message: "Card not found" });
@@ -78,7 +108,7 @@ app.put('/:id', async (req, res) => {
 
 // DELETE CARD BY ID
 
-app.delete('/:id', async (req, res) => {
+app.delete('/:id',authenticateToken, async (req, res) => {
     try {
         const deletedCard = await Card.findByIdAndDelete(req.params.id);
         if (!deletedCard) return res.status(404).json({ message: "Card not found" });
@@ -90,7 +120,7 @@ app.delete('/:id', async (req, res) => {
 
 // GET CARD BY ACCOUNT NUMBER 
 
-app.get('/accountNumber/:accountNumber',async(req,res)=>{
+app.get('/accountNumber/:accountNumber',authenticateToken,async(req,res)=>{
     const list = await Card.find({accountNumber:req.params.accountNumber})
     res.json(list)
   })

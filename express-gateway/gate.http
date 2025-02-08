@@ -1,6 +1,7 @@
 ########################################## CUSTOMER ###############################################################
 ### GET CUSTOMER
 GET http://localhost:5000/customer
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
 
 ### ADD CUSTOMER
 POST http://localhost:5000/customer
@@ -18,10 +19,12 @@ Content-Type: application/json
 
 ### GET CUSTOMER BY ID 
 GET http://localhost:5000/customer/67a5d4b03440b2d7b7b422c8
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
 
 ### UPDATE CUSTOMER BY ID
 PUT http://localhost:5000/customer
 Content-Type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
 
 {
   "_id": "67a5c8e36a8d94dc1cd12cba",
@@ -37,20 +40,27 @@ Content-Type: application/json
 
 ### DELETE CUSTOMER BY ID 
 DELETE http://localhost:5000/customer/67a5d6a456a3295b5718bde4
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
 
 ### GET CUSTOMER BY AADHAR
 GET http://localhost:5000/customer/aadhar/987654321
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
 
 ### GET CUSTOMER BY USERNAME 
 GET http://localhost:5000/customer/username/V3
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
 
 ########################################## ACCOUNT ###############################################################
 ### GET ALL ACCOUNT WITH CARD
 GET http://localhost:5000/account
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
+
 
 ### ADD Bank Account
 POST http://localhost:5000/account
 Content-Type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
+
 
 {
     "username": "vetree_1",
@@ -61,10 +71,14 @@ Content-Type: application/json
 
 ### GET ACCOUNT BY ID
 GET http://localhost:5000/account/67a5e55651341ae5ed4177f8
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
+
 
 ### UPDATE ACCOUNT BY ID
 PUT http://localhost:5000/account/67a5e55651341ae5ed4177f8
 Content-Type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
+
 
 {
   "username": "dp",
@@ -75,18 +89,26 @@ Content-Type: application/json
 
 ### DELETE ACCOUNT BY ID
 DELETE http://localhost:5000/account/67a5e55651341ae5ed4177f8
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
+
 
 ### GET ACCOUNT BY ACCOUNT NUMBER
 GET http://localhost:5000/account/accountNumber/1234569
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
+
 
 ### GET ACCOUNT BY USERNAME
 GET http://localhost:5000/account/username/P3
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
+
 
 ########################################## CARD ###############################################################
 
 ### ADD CARD
 POST http://localhost:5000/card/
 Content-Type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
+
 
 {
     "cardNumber": 123456789016,
@@ -98,13 +120,19 @@ Content-Type: application/json
 
 ### GET ALL CARD
 GET http://localhost:5000/card/
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
+
 
 ### GET CARD BY ID
-GET http://localhost:5000/card/67a5ca9f0bc3009fb71db020
+GET http://localhost:5000/card/67a612651bf47673cc077307
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
+
 
 ### UPDATE CARD BY ID
-PUT http://localhost:5000/card/67a5ca9f0bc3009fb71db020
+PUT http://localhost:5000/card/67a612651bf47673cc077307
 Content-Type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
+
 
 {
     "cardNumber": 123456789016,
@@ -115,11 +143,15 @@ Content-Type: application/json
 }
 
 ### DELETE CARD BY ID
-DELETE http://localhost:5000/card/67a5ca9f0bc3009fb71db020
+DELETE http://localhost:5000/card/67a612651bf47673cc077307
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
+
 
 ### GET CARD BY ACCOUNT NUMBER 
 
-GET http://localhost:5000/card/accountNumber/1234569
+GET http://localhost:5000/card/accountNumber/777000
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
+
 
 
 

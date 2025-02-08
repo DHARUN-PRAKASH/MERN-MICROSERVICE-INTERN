@@ -1,23 +1,30 @@
 ### ADD Bank Account
 POST http://localhost:4000/
 Content-Type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
+
 
 {
     "username": "P3",
-    "accountNumber": 1234569,
+    "accountNumber": 123469,
     "accountBalance": 6000,
     "accountStatus": "active"
 }
 
 ### GET ALL ACCOUNT
 GET http://localhost:4000/
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
 
 ### GET ACCOUNT BY ID
-GET http://localhost:4000/67a5c90a56ab77b2b46841a0
+GET http://localhost:4000/67a61018bf984d9f6050de25
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
+
 
 ### UPDATE ACCOUNT BY ID
-PUT http://localhost:4000/67a5c90a56ab77b2b46841a0
+PUT http://localhost:4000/67a61018bf984d9f6050de25
 Content-Type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
+
 
 {
   "username": "dpz",
@@ -27,10 +34,16 @@ Content-Type: application/json
 }
 
 ### DELETE ACCOUNT BY ID
-DELETE http://localhost:4000/67a5c90a56ab77b2b46841a0
+DELETE http://localhost:4000/67a61018bf984d9f6050de25
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
+
 
 ### GET ACCOUNT BY ACCOUNT NUMBER
-GET http://localhost:4000/accountNumber/1234569
+GET http://localhost:4000/accountNumber/123469
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
+
 
 ### GET ACCOUNT BY USERNAME
 GET http://localhost:4000/username/P3
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
+

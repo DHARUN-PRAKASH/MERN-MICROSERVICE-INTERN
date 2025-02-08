@@ -15,14 +15,17 @@ Content-Type: application/json
 
 ### Get All Customers
 GET http://localhost:6000/
-authorization: Bearer eyJhbGciOiJIUzI1NiIsascckbjcsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmYzE2OTE2OGQwNDcxMGYxZGQ1YiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk2NzU5LCJleHAiOjE3MzkwMDAzNTl9.bzUbzRrN_NG-gcV4DSju5wNLanczcsewGHI2VZvL0Gk
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
 
 ### Get Customer by ID
-GET http://localhost:6000/6798e4cf099ff42db761e9b5
+GET http://localhost:6000/67a60f74ac53b0ed676d8f60
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
 
 ### Update Customer by ID
 PUT http://localhost:6000/
 Content-Type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjFiZWJjZmRmMmIzNzAzYzllMCIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NTMxLCJleHAiOjE3MzkwMDExMzF9.AG_zbb-4DW0K6zSaPxvtqBZnqgBb50L8rdlgA0PuI2w
+
 
 {
   "_id": "6798e4cf099ff42db761e9b5",
@@ -37,13 +40,19 @@ Content-Type: application/json
 }
 
 ### Delete Customer by ID
-DELETE http://localhost:6000/6798e4cf099ff42db761e9b5
+DELETE http://localhost:6000/67a60f74ac53b0ed676d8f60
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjFiZWJjZmRmMmIzNzAzYzllMCIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NTMxLCJleHAiOjE3MzkwMDExMzF9.AG_zbb-4DW0K6zSaPxvtqBZnqgBb50L8rdlgA0PuI2w
+
 
 ### GET CUSTOMER BY AADHAR 
 
 GET http://localhost:6000/aadhar/987654321
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjFiZWJjZmRmMmIzNzAzYzllMCIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NTMxLCJleHAiOjE3MzkwMDExMzF9.AG_zbb-4DW0K6zSaPxvtqBZnqgBb50L8rdlgA0PuI2w
+
 
 ### GET CUSTOMER BY USERNAME 
 
-GET http://localhost:6000/username/V3
+GET http://localhost:6000/username/lenin3
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjFiZWJjZmRmMmIzNzAzYzllMCIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NTMxLCJleHAiOjE3MzkwMDExMzF9.AG_zbb-4DW0K6zSaPxvtqBZnqgBb50L8rdlgA0PuI2w
+
 

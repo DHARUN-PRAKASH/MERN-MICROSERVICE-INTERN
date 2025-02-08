@@ -5,6 +5,9 @@ const mongoose = require('./db');
 const account = require('./accountSchema');  // Fixed variable name issue
 const Consul = require('consul');
 const axios = require('axios')
+const jwt = require("jsonwebtoken");
+require('dotenv').config()
+const bcrypt = require("bcryptjs");
 
 const app = express();
 app.use(bodyParser.json());
@@ -31,38 +34,50 @@ process.on("SIGINT", async () => {
     });
 });
 
+// TOKEN VERFICATION 
+let token = ''
+const authenticateToken=(req,res,next)=>{
+    const receivedHeader = req.headers['authorization']
+    if(!receivedHeader){
+        return res.json({message:"No header has provided"})
+    }
+    // fetch the token alone from header using split by space delimiter
+    token = receivedHeader.split(' ')[1]
+    jwt.verify(token,process.env.secret,(err,decoded)=>{
+        if(err){
+            return res.json({message:"Unauthorized Access/ Invalid Token"})
+        }
+        req.user = decoded
+        next()
+    })
+}
+
+// forward Token
+const authForward = (req,res,next)=>{
+    const header = req.headers['authorization']
+    if(header){
+        req.headers['authorization']=header
+        // create an new header with same value for forwarding to the service
+    }
+    next()// forwarding invoked
+}
+
+
 // ADD ACCOUNT
 
 const SECRET_KEY = process.env.JWT_SECRET;
  // Load secret key from .env
 
-app.post('/', async (req, res) => {
+ app.post('/',authenticateToken, async (req, res) => {
     try {
-        const { fullname, username, password, aadhaar, pan, contact, email } = req.body;
-
-        // Hash the password before saving
-        const hashedPassword = await bcrypt.hash(password, 10);
-
-        const obj = new customer({
-            fullname,
-            username,
-            password: hashedPassword, // Store hashed password
-            aadhaar,
-            pan,
-            contact,
-            email
+        const obj = new account({
+            username: req.body.username,
+            accountNumber: req.body.accountNumber,
+            accountBalance: req.body.accountBalance,
+            accountStatus: req.body.accountStatus,
         });
-
         const result = await obj.save();
-
-        // Generate JWT token
-        const token = jwt.sign(
-            { id: result._id, username: result.username },
-            SECRET_KEY,
-            { expiresIn: '1h' }
-        );
-
-        res.json({ result, token });
+        res.json({ message: "Account Created", result });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -79,7 +94,7 @@ app.post('/', async (req, res) => {
 // });
 
 // GET ACCOUNT BY ID 
-app.get('/:id', async (req, res) => {
+app.get('/:id', authenticateToken,async (req, res) => {
     try {
         const acc = await account.findById(req.params.id);
         if (!acc) return res.status(404).json({ message: "Account not found" });
@@ -90,7 +105,7 @@ app.get('/:id', async (req, res) => {
 });
 
 // UPDATE ACCOUNT BY ID 
-app.put('/:id', async (req, res) => {
+app.put('/:id', authenticateToken,async (req, res) => {
     try {
         const updatedAccount = await account.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (!updatedAccount) return res.status(404).json({ message: "Account not found" });
@@ -102,7 +117,7 @@ app.put('/:id', async (req, res) => {
 
 //DELETE AACCOUNT BY ID
 
-app.delete('/:id', async (req, res) => {
+app.delete('/:id',authenticateToken, async (req, res) => {
     try {
         const deletedAccount = await account.findByIdAndDelete(req.params.id);
         if (!deletedAccount) return res.status(404).json({ message: "Account not found" });
@@ -113,7 +128,7 @@ app.delete('/:id', async (req, res) => {
 });
 
 // GET ACCOUNT BY ACCOUNT NUMBER
-app.get('/accountNumber/:acc_no', async (req, res) => {
+app.get('/accountNumber/:acc_no',authenticateToken, async (req, res) => {
     try {
         const acc = await account.findOne({ accountNumber: req.params.acc_no });
         if (!acc) return res.status(404).json({ message: "Account not found" });
@@ -125,14 +140,14 @@ app.get('/accountNumber/:acc_no', async (req, res) => {
 
 // GET ACCOUNT FROM USERNAME 
 
-app.get('/username/:username',async(req,res)=>{
+app.get('/username/:username',authenticateToken,async(req,res)=>{
   const list = await account.find({username:req.params.username})
   res.json(list)
 })
 
 // GET ALL ACCOUNT AND CARD 
 
-app.get('/',async(req,res)=>{
+app.get('/',authenticateToken,async(req,res)=>{
   var acc = await account.find()
   const services = await consul.catalog.service.nodes('card')
   if(services.length==0)

@@ -1,6 +1,8 @@
 ### ADD CARD
 POST http://localhost:7000/
 Content-Type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
+
 
 {
     "cardNumber": 123456789016,
@@ -12,13 +14,20 @@ Content-Type: application/json
 
 ### GET ALL CARD
 GET http://localhost:7000/
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
+
 
 ### GET CARD BY ID
 GET http://localhost:7000/67a5ca9f0bc3009fb71db020
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
+
+
 
 ### UPDATE CARD BY ID
 PUT http://localhost:7000/67a5ca9f0bc3009fb71db020
 Content-Type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
+
 
 {
     "cardNumber": 123456789016,
@@ -30,7 +39,11 @@ Content-Type: application/json
 
 ### DELETE CARD BY ID
 DELETE http://localhost:7000/67a5ca9f0bc3009fb71db020
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
+
 
 ### GET CARD BY ACCOUNT NUMBER 
 
 GET http://localhost:7000/accountNumber/1234569
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
+

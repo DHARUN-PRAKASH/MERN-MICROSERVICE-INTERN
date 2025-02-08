@@ -37,8 +37,6 @@ process.on("SIGINT",async()=>{
 })
 
 // TOKEN VERFICATION 
-
-// token verification
 let token = ''
 const authenticateToken=(req,res,next)=>{
     const receivedHeader = req.headers['authorization']
@@ -71,7 +69,7 @@ const authForward = (req,res,next)=>{
 const SECRET_KEY = process.env.secret;
 // console.log("JWT Secret Key:", SECRET_KEY);
 
-app.post('/', async (req, res) => {
+app.post('/',async (req, res) => {
     try {
 
         const { fullname, username, password, aadhaar, pan, contact, email } = req.body;
@@ -113,20 +111,20 @@ app.post('/', async (req, res) => {
 // })
 
 // READ THE CUTOMER BY ID 
-app.get('/:id',async(req,res)=>{
+app.get('/:id',authenticateToken,async(req,res)=>{
   const fetched = await customer.findById(id=req.params.id)
   res.json(fetched)
 })
 
 // UPDATE CUSTOMER NY ID 
 
-app.put('/',async(req,res)=>{
+app.put('/',authenticateToken,async(req,res)=>{
   const result = await customer.updateOne({_id:req.body._id},req.body,{upsert:true})
   res.json(result)
 })
 
 // DELETE CUSTOMER BY ID 
-app.delete('/:id', async (req, res) => {
+app.delete('/:id', authenticateToken,async (req, res) => {
   try {
       const deletedCustomer = await customer.findOneAndDelete({ _id: req.params.id });
       
@@ -141,7 +139,7 @@ app.delete('/:id', async (req, res) => {
 });
 
 
-app.delete('/:id',async(req,res)=>{
+app.delete('/:id',authenticateToken,async(req,res)=>{
   await customer.findOneAndDelete(_id=req.params.id)
   res.json("Deleted ")
 })
@@ -149,14 +147,14 @@ app.delete('/:id',async(req,res)=>{
 
 // GET CUSTOMER BY AADHAR
 
-app.get('/aadhar/:aadharNumber',async(req,res)=>{
+app.get('/aadhar/:aadharNumber',authenticateToken,async(req,res)=>{
   const list = await customer.find({aadhaar:req.params.aadharNumber})
   res.json(list)
 })
 
 // GET CUSTOMER BY USERNAME
 
-app.get('/username/:username',async(req,res)=>{
+app.get('/username/:username',authenticateToken,async(req,res)=>{
   const list = await customer.find({username:req.params.username})
   res.json(list)
 })
