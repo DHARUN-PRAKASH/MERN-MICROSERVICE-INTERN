@@ -5,9 +5,9 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZ
 
 
 {
-    "username": "P3",
-    "accountNumber": 123469,
-    "accountBalance": 6000,
+    "username": "dharun_1",
+    "accountNumber": 212312212212121,
+    "accountBalance": 60000,
     "accountStatus": "active"
 }
 

@@ -169,7 +169,12 @@ app.get('/',authenticateToken,async(req,res)=>{
       cust.map(async(each)=>{
           let customer_account = []
           try{
-              const received = await axios.get(`http://${accServ.Address}:${accServ.ServicePort}/username/${each.username}`)
+              const received = await axios.get(`http://${accServ.Address}:${accServ.ServicePort}/username/${each.username}`,{
+                headers:{
+                    'authorization':`Bearer ${token}`
+                }
+            })
+
               customer_account = received.data
           }
           catch(error){return res.json({message:"Error fetching account"})}
@@ -181,5 +186,5 @@ app.get('/',authenticateToken,async(req,res)=>{
 })
 
 app.listen(6000, () => {
-    console.log('Customer Running on  !!!');
+    console.log('Customer Running on 6000 !!!');
 });

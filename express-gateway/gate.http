@@ -1,25 +1,24 @@
 ########################################## CUSTOMER ###############################################################
 ### GET CUSTOMER
 GET http://localhost:5000/customer
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
-
-### ADD CUSTOMER
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTc2MWI1ZjEzMjQyMjk1MDA2ZGFiZCIsInVzZXJuYW1lIjoic2VsdmFfMSIsImlhdCI6MTczOTAyMjc3NCwiZXhwIjoxNzM5MDI2Mzc0fQ.q7izjqSlqrvjifejBFQpz8KUxLNkseY_GT13XU-fHXE
+###
 POST http://localhost:5000/customer
 Content-Type: application/json
 
 {
-  "fullname": "vetree",
-  "username": "vetree_1",
-  "password": "4444",
-  "aadhaar": 1546,
-  "pan": "vet123",
-  "contact": 698745123,
-  "email": "vetree@gmail.com"
+  "fullname": "DHARUN PRAKASH J A",
+  "username": "dharun_1",
+  "password": "123456789",
+  "aadhaar": 9012399120,
+  "pan": "dha1234",
+  "contact": 6374406703,
+  "email": "dharunprakash2904@gmail.com"
 }
 
 ### GET CUSTOMER BY ID 
 GET http://localhost:5000/customer/67a5d4b03440b2d7b7b422c8
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTcxMDlhMGM2ZDNmNjYxOGM3ZDAzOCIsInVzZXJuYW1lIjoidmV0cmVlXzEiLCJpYXQiOjE3MzkwMDIwMTEsImV4cCI6MTczOTAwNTYxMX0.gGelAIJoQz61ZNYne71Yvh1GjGlFuKJs7QRgG28aJk0
 
 ### UPDATE CUSTOMER BY ID
 PUT http://localhost:5000/customer
@@ -53,19 +52,17 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZ
 ########################################## ACCOUNT ###############################################################
 ### GET ALL ACCOUNT WITH CARD
 GET http://localhost:5000/account
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
-
-
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTc3MDE0YjY1MDIxMTUxYzY1ZDUzOSIsInVzZXJuYW1lIjoiZGhhcnVuXzEiLCJpYXQiOjE3MzkwMjY0NTIsImV4cCI6MTczOTAzMDA1Mn0.A-6WnPcoRadccy0MeJ6uoF5cDB2Mo2286E0-A_jD1vM
 ### ADD Bank Account
 POST http://localhost:5000/account
 Content-Type: application/json
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTc2MWI1ZjEzMjQyMjk1MDA2ZGFiZCIsInVzZXJuYW1lIjoic2VsdmFfMSIsImlhdCI6MTczOTAyMjc3NCwiZXhwIjoxNzM5MDI2Mzc0fQ.q7izjqSlqrvjifejBFQpz8KUxLNkseY_GT13XU-fHXE
 
 
 {
-    "username": "vetree_1",
-    "accountNumber": 888000,
-    "accountBalance": 10000,
+    "username": "dharun_1",
+    "accountNumber": 999000,
+    "accountBalance": 100000,
     "accountStatus": "active"
 }
 
@@ -77,11 +74,11 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZ
 ### UPDATE ACCOUNT BY ID
 PUT http://localhost:5000/account/67a5e55651341ae5ed4177f8
 Content-Type: application/json
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTcxMDlhMGM2ZDNmNjYxOGM3ZDAzOCIsInVzZXJuYW1lIjoidmV0cmVlXzEiLCJpYXQiOjE3MzkwMDIwMTEsImV4cCI6MTczOTAwNTYxMX0.gGelAIJoQz61ZNYne71Yvh1GjGlFuKJs7QRgG28aJk0
 
 
 {
-  "username": "dp",
+  "username": "vetree_1",
   "accountNumber": 123456789,
   "accountBalance": 1000,
   "__v": 0
@@ -107,22 +104,20 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZ
 ### ADD CARD
 POST http://localhost:5000/card/
 Content-Type: application/json
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTc2MWI1ZjEzMjQyMjk1MDA2ZGFiZCIsInVzZXJuYW1lIjoic2VsdmFfMSIsImlhdCI6MTczOTAyMjc3NCwiZXhwIjoxNzM5MDI2Mzc0fQ.q7izjqSlqrvjifejBFQpz8KUxLNkseY_GT13XU-fHXE
 
 
 {
-    "cardNumber": 123456789016,
-    "cvv": 456,
-    "expiry": "12/28",
+    "cardNumber": 2321237833016,
+    "cvv": 930,
+    "expiry": "04/29",
     "status": "active",
-    "accountNumber": 777000
+    "accountNumber": 845000
 }
 
 ### GET ALL CARD
 GET http://localhost:5000/card/
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
-
-
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTc3MDE0YjY1MDIxMTUxYzY1ZDUzOSIsInVzZXJuYW1lIjoiZGhhcnVuXzEiLCJpYXQiOjE3MzkwMjY0NTIsImV4cCI6MTczOTAzMDA1Mn0.A-6WnPcoRadccy0MeJ6uoF5cDB2Mo2286E0-A_jD1vM
 ### GET CARD BY ID
 GET http://localhost:5000/card/67a612651bf47673cc077307
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
@@ -151,10 +146,3 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZ
 
 GET http://localhost:5000/card/accountNumber/777000
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTZmZjcxZWJjZmRmMmIzNzAzYzllNiIsInVzZXJuYW1lIjoibGVuaW4zIiwiaWF0IjoxNzM4OTk3NjE3LCJleHAiOjE3MzkwMDEyMTd9.gIPey1epNElfPcLm1y_-I28RslZDg4_TQecZHwv8ngw
-
-
-
-
-
-
-

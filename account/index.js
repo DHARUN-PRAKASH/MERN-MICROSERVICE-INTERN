@@ -157,7 +157,11 @@ app.get('/',authenticateToken,async(req,res)=>{
       acc.map(async(each)=>{
           let customer_account = []
           try{
-              const received = await axios.get(`http://${accServ.Address}:${accServ.ServicePort}/accountNumber/${each.accountNumber}`)
+              const received = await axios.get(`http://${accServ.Address}:${accServ.ServicePort}/accountNumber/${each.accountNumber}`,{
+                headers:{
+                    'authorization':`Bearer ${token}`
+                }
+            })
               customer_account = received.data
           }
           catch(error){return res.json({message:"Error fetching card"})}
