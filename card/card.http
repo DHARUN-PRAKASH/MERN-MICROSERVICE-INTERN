@@ -1,31 +1,35 @@
-### CREATE a Card
-POST http://localhost:7000/card
+### ADD CARD
+POST http://localhost:7000/
 Content-Type: application/json
 
 {
-    "cardNumber": 1234567890123456,
-    "cvv": 123,
+    "cardNumber": 123456789016,
+    "cvv": 456,
     "expiry": "12/28",
     "status": "active",
     "accountNumber": 1234569
 }
 
-### GET All Cards
-GET http://localhost:7000/card
+### GET ALL CARD
+GET http://localhost:7000/
 
-### GET a Card by ID
-GET http://localhost:7000/card/65b12345abcd67890ef12345
+### GET CARD BY ID
+GET http://localhost:7000/67a5ca9f0bc3009fb71db020
 
-### UPDATE a Card
-PUT http://localhost:7000/card/65b12345abcd67890ef12345
+### UPDATE CARD BY ID
+PUT http://localhost:7000/67a5ca9f0bc3009fb71db020
 Content-Type: application/json
 
 {
-    "status": "blocked"
+    "cardNumber": 123456789016,
+    "cvv": 456,
+    "expiry": "12/28",
+    "status": "block",
+    "accountNumber": 1234569
 }
 
-### DELETE a Card
-DELETE http://localhost:7000/card/65b12345abcd67890ef12345
+### DELETE CARD BY ID
+DELETE http://localhost:7000/67a5ca9f0bc3009fb71db020
 
 ### GET CARD BY ACCOUNT NUMBER 
 

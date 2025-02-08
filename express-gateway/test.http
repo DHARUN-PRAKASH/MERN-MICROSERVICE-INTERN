@@ -1,7 +1,0 @@
-### GET CUSTOMER
-
-GET http://localhost:5000/customer
-
-### GET ACCOUNT
-
-GET http://localhost:5000/account

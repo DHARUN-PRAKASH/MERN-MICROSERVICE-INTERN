@@ -1,0 +1,36 @@
+### ADD Bank Account
+POST http://localhost:4000/
+Content-Type: application/json
+
+{
+    "username": "P3",
+    "accountNumber": 1234569,
+    "accountBalance": 6000,
+    "accountStatus": "active"
+}
+
+### GET ALL ACCOUNT
+GET http://localhost:4000/
+
+### GET ACCOUNT BY ID
+GET http://localhost:4000/67a5c90a56ab77b2b46841a0
+
+### UPDATE ACCOUNT BY ID
+PUT http://localhost:4000/67a5c90a56ab77b2b46841a0
+Content-Type: application/json
+
+{
+  "username": "dpz",
+  "accountNumber": 123456789,
+  "accountBalance": 1000,
+  "__v": 0
+}
+
+### DELETE ACCOUNT BY ID
+DELETE http://localhost:4000/67a5c90a56ab77b2b46841a0
+
+### GET ACCOUNT BY ACCOUNT NUMBER
+GET http://localhost:4000/accountNumber/1234569
+
+### GET ACCOUNT BY USERNAME
+GET http://localhost:4000/username/P3

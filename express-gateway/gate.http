@@ -1,0 +1,128 @@
+########################################## CUSTOMER ###############################################################
+### GET CUSTOMER
+GET http://localhost:5000/customer
+
+### ADD CUSTOMER
+POST http://localhost:5000/customer
+Content-Type: application/json
+
+{
+  "fullname": "vetree",
+  "username": "vetree_1",
+  "password": "4444",
+  "aadhaar": 1546,
+  "pan": "vet123",
+  "contact": 698745123,
+  "email": "vetree@gmail.com"
+}
+
+### GET CUSTOMER BY ID 
+GET http://localhost:5000/customer/67a5d4b03440b2d7b7b422c8
+
+### UPDATE CUSTOMER BY ID
+PUT http://localhost:5000/customer
+Content-Type: application/json
+
+{
+  "_id": "67a5c8e36a8d94dc1cd12cba",
+  "fullname": "Selva",
+  "username": "dp",
+  "password": "123",
+  "aadhaar": 1234567890,
+  "pan": "DHARUN1234",
+  "contact": 6374406703,
+  "email": "dharun@gmail.com",
+  "__v": 0
+}
+
+### DELETE CUSTOMER BY ID 
+DELETE http://localhost:5000/customer/67a5d6a456a3295b5718bde4
+
+### GET CUSTOMER BY AADHAR
+GET http://localhost:5000/customer/aadhar/987654321
+
+### GET CUSTOMER BY USERNAME 
+GET http://localhost:5000/customer/username/V3
+
+########################################## ACCOUNT ###############################################################
+### GET ALL ACCOUNT WITH CARD
+GET http://localhost:5000/account
+
+### ADD Bank Account
+POST http://localhost:5000/account
+Content-Type: application/json
+
+{
+    "username": "vetree_1",
+    "accountNumber": 888000,
+    "accountBalance": 10000,
+    "accountStatus": "active"
+}
+
+### GET ACCOUNT BY ID
+GET http://localhost:5000/account/67a5e55651341ae5ed4177f8
+
+### UPDATE ACCOUNT BY ID
+PUT http://localhost:5000/account/67a5e55651341ae5ed4177f8
+Content-Type: application/json
+
+{
+  "username": "dp",
+  "accountNumber": 123456789,
+  "accountBalance": 1000,
+  "__v": 0
+}
+
+### DELETE ACCOUNT BY ID
+DELETE http://localhost:5000/account/67a5e55651341ae5ed4177f8
+
+### GET ACCOUNT BY ACCOUNT NUMBER
+GET http://localhost:5000/account/accountNumber/1234569
+
+### GET ACCOUNT BY USERNAME
+GET http://localhost:5000/account/username/P3
+
+########################################## CARD ###############################################################
+
+### ADD CARD
+POST http://localhost:5000/card/
+Content-Type: application/json
+
+{
+    "cardNumber": 123456789016,
+    "cvv": 456,
+    "expiry": "12/28",
+    "status": "active",
+    "accountNumber": 777000
+}
+
+### GET ALL CARD
+GET http://localhost:5000/card/
+
+### GET CARD BY ID
+GET http://localhost:5000/card/67a5ca9f0bc3009fb71db020
+
+### UPDATE CARD BY ID
+PUT http://localhost:5000/card/67a5ca9f0bc3009fb71db020
+Content-Type: application/json
+
+{
+    "cardNumber": 123456789016,
+    "cvv": 456,
+    "expiry": "12/28",
+    "status": "block",
+    "accountNumber": 1234569
+}
+
+### DELETE CARD BY ID
+DELETE http://localhost:5000/card/67a5ca9f0bc3009fb71db020
+
+### GET CARD BY ACCOUNT NUMBER 
+
+GET http://localhost:5000/card/accountNumber/1234569
+
+
+
+
+
+

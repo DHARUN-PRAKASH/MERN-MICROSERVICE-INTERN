@@ -51,6 +51,21 @@ app.use('/account',async(req,res,next)=>{
     }
 })
 
+app.use('/card',async(req,res,next)=>{
+    try{
+        // fetching course url, port using fetching function
+    const courseDetails = await fetchingService('card')
+    // forwarding to course service
+    createProxyMiddleware({
+        target:courseDetails,
+        changeOrigin:true
+    })(req,res,next)
+    }
+    catch(error){
+        res.send({error:error.message})
+    }
+})
+
 app.listen(5000,()=>{
     console.log("GATEWAY 5000 RUNNING!!!!")
 })

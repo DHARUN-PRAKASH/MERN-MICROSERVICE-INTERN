@@ -1,9 +1,10 @@
+
 ### Create a Customer
 POST http://localhost:6000/
 Content-Type: application/json
 
 {
-  "fullname": "Prakash",
+  "fullname": "Moulee",
   "username": "P3",
   "password": "123",
   "aadhaar": 987654321,
@@ -40,12 +41,9 @@ DELETE http://localhost:6000/6798e4cf099ff42db761e9b5
 
 ### GET CUSTOMER BY AADHAR 
 
-GET http://localhost:6000/aadhar/123456789122120
+GET http://localhost:6000/aadhar/987654321
 
 ### GET CUSTOMER BY USERNAME 
 
-GET http://localhost:6000/username/dpz
+GET http://localhost:6000/username/V3
 
-### GET CUSTOMER BY USERNAME 
-
-GET http://localhost:6000/customer/dpz

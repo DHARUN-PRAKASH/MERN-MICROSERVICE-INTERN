@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('./db');
-const BankAccount = require('./accountSchema');  // Fixed variable name issue
+const account = require('./accountSchema');  // Fixed variable name issue
 const Consul = require('consul');
 const axios = require('axios')
 
@@ -30,15 +30,14 @@ process.on("SIGINT", async () => {
     });
 });
 
-// 🔹 CREATE - Add a new bank account
-app.post('/account', async (req, res) => {
+// ADD ACCOUNT
+app.post('/', async (req, res) => {
     try {
-        const obj = new BankAccount({
+        const obj = new account({
             username: req.body.username,
             accountNumber: req.body.accountNumber,
             accountBalance: req.body.accountBalance,
             accountStatus: req.body.accountStatus,
-            card: req.body.card || []  // Default to empty array if no cards provided
         });
         const result = await obj.save();
         res.json({ message: "Account Created", result });
@@ -47,31 +46,31 @@ app.post('/account', async (req, res) => {
     }
 });
 
-// 🔹 READ - Get all bank accounts
-app.get('/account', async (req, res) => {
+// GET ACCOUNT ONLY
+// app.get('/', async (req, res) => {
+//     try {
+//         const accounts = await account.find();
+//         res.json(accounts);
+//     } catch (error) {
+//         res.status(500).json({ error: error.message });
+//     }
+// });
+
+// GET ACCOUNT BY ID 
+app.get('/:id', async (req, res) => {
     try {
-        const accounts = await BankAccount.find();
-        res.json(accounts);
+        const acc = await account.findById(req.params.id);
+        if (!acc) return res.status(404).json({ message: "Account not found" });
+        res.json(acc);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 });
 
-// 🔹 READ - Get bank account by ID
-app.get('/account/:id', async (req, res) => {
+// UPDATE ACCOUNT BY ID 
+app.put('/:id', async (req, res) => {
     try {
-        const account = await BankAccount.findById(req.params.id);
-        if (!account) return res.status(404).json({ message: "Account not found" });
-        res.json(account);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
-
-// 🔹 UPDATE - Edit bank account by ID
-app.put('/account/:id', async (req, res) => {
-    try {
-        const updatedAccount = await BankAccount.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        const updatedAccount = await account.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (!updatedAccount) return res.status(404).json({ message: "Account not found" });
         res.json({ message: "Account Updated", updatedAccount });
     } catch (error) {
@@ -79,10 +78,11 @@ app.put('/account/:id', async (req, res) => {
     }
 });
 
-//DELETE
-app.delete('/account/:id', async (req, res) => {
+//DELETE AACCOUNT BY ID
+
+app.delete('/:id', async (req, res) => {
     try {
-        const deletedAccount = await BankAccount.findByIdAndDelete(req.params.id);
+        const deletedAccount = await account.findByIdAndDelete(req.params.id);
         if (!deletedAccount) return res.status(404).json({ message: "Account not found" });
         res.json({ message: "Account Deleted" });
     } catch (error) {
@@ -93,9 +93,9 @@ app.delete('/account/:id', async (req, res) => {
 // GET ACCOUNT BY ACCOUNT NUMBER
 app.get('/accountNumber/:acc_no', async (req, res) => {
     try {
-        const account = await BankAccount.findOne({ accountNumber: req.params.acc_no });
-        if (!account) return res.status(404).json({ message: "Account not found" });
-        res.json(account);
+        const acc = await account.findOne({ accountNumber: req.params.acc_no });
+        if (!acc) return res.status(404).json({ message: "Account not found" });
+        res.json(acc);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -104,14 +104,14 @@ app.get('/accountNumber/:acc_no', async (req, res) => {
 // GET ACCOUNT FROM USERNAME 
 
 app.get('/username/:username',async(req,res)=>{
-  const list = await BankAccount.find({username:req.params.username})
+  const list = await account.find({username:req.params.username})
   res.json(list)
 })
 
 // GET ALL ACCOUNT AND CARD 
 
 app.get('/',async(req,res)=>{
-  var acc = await BankAccount.find()
+  var acc = await account.find()
   const services = await consul.catalog.service.nodes('card')
   if(services.length==0)
       throw new Error("card service not registered in consul")

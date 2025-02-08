@@ -69,11 +69,26 @@ app.put('/',async(req,res)=>{
 })
 
 // DELETE CUSTOMER BY ID 
+app.delete('/:id', async (req, res) => {
+  try {
+      const deletedCustomer = await customer.findOneAndDelete({ _id: req.params.id });
+      
+      if (!deletedCustomer) {
+          return res.status(404).json({ message: "Customer not found" });
+      }
+
+      res.json({ message: "Deleted" });
+  } catch (error) {
+      res.status(500).json({ error: error.message });
+  }
+});
+
 
 app.delete('/:id',async(req,res)=>{
-  await customer.findOneAndDelete(id=req.params.id)
+  await customer.findOneAndDelete(_id=req.params.id)
   res.json("Deleted ")
 })
+
 
 // GET CUSTOMER BY AADHAR
 
@@ -111,5 +126,5 @@ app.get('/',async(req,res)=>{
 })
 
 app.listen(6000, () => {
-    console.log('Customer Running !!!');
+    console.log('Customer Running on  !!!');
 });

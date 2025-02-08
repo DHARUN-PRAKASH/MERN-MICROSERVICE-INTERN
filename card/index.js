@@ -31,8 +31,9 @@ process.on("SIGINT", async () => {
 });
 
 
-// POST A NEW CARD  
-app.post('/card', async (req, res) => {
+// ADD NEW CARD
+
+app.post('/', async (req, res) => {
     try {
         const card = new Card(req.body);
         await card.save();
@@ -42,8 +43,8 @@ app.post('/card', async (req, res) => {
     }
 });
 
-// 🔹 READ - Get all cards
-app.get('/card', async (req, res) => {
+// GET ALL CARDS
+app.get('/', async (req, res) => {
     try {
         const cards = await Card.find();
         res.json(cards);
@@ -52,8 +53,8 @@ app.get('/card', async (req, res) => {
     }
 });
 
-// 🔹 READ - Get card by ID
-app.get('/card/:id', async (req, res) => {
+//GET CARD BY ID
+app.get('/:id', async (req, res) => {
     try {
         const card = await Card.findById(req.params.id);
         if (!card) return res.status(404).json({ message: "Card not found" });
@@ -63,8 +64,9 @@ app.get('/card/:id', async (req, res) => {
     }
 });
 
-// 🔹 UPDATE - Edit card by ID
-app.put('/card/:id', async (req, res) => {
+// UPDATE CARD BY ID 
+
+app.put('/:id', async (req, res) => {
     try {
         const updatedCard = await Card.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (!updatedCard) return res.status(404).json({ message: "Card not found" });
@@ -74,8 +76,9 @@ app.put('/card/:id', async (req, res) => {
     }
 });
 
-// 🔹 DELETE - Remove card by ID
-app.delete('/card/:id', async (req, res) => {
+// DELETE CARD BY ID
+
+app.delete('/:id', async (req, res) => {
     try {
         const deletedCard = await Card.findByIdAndDelete(req.params.id);
         if (!deletedCard) return res.status(404).json({ message: "Card not found" });
